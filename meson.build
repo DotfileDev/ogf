@@ -27,3 +27,7 @@ ogf_dep = declare_dependency(
     include_directories: include_directories('include'),
     link_with: libogf
 )
+
+if get_option('build_examples')
+    subdir('examples')
+endif
