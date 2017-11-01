@@ -19,7 +19,8 @@ libogf = library(
     include_directories: include_directories('include', 'source'),
     dependencies: [
         sdl2_dep,
-        glad_dep
+        glad_dep,
+        stb_dep
     ]
 )
 
