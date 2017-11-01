@@ -1,5 +1,7 @@
 #include <ogf/system/event.hxx>
 #include <ogf/system/window.hxx>
+#include <ogf/math/vector2.hxx>
+#include <ogf/math/vector3.hxx>
 
 int main() {
     ogf::Window window{};
