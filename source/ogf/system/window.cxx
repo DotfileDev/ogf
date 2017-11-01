@@ -79,7 +79,14 @@ namespace ogf {
     }
 
     bool Window::wait_event(Event& event) const noexcept {
-        return false;
+        if(!SDL_WaitEvent(event.m_sdl_event)) {
+            return false;
+        }
+        const auto is_known_event = translate_sdl_event_to_ogf_event(event);
+        if(!is_known_event) {
+            return false;
+        }
+        return true;
     }
 
     void Window::clear() {
