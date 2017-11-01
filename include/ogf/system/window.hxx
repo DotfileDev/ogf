@@ -5,7 +5,9 @@
 
 namespace ogf {
 
+    class Drawable;
     class Event;
+    class Shader;
 
     class Window {
     public:
@@ -25,6 +27,7 @@ namespace ogf {
 
         void clear();
         void swap_buffers();
+        void draw(const Drawable& drawable, Shader& shader) const;
 
         Window& set_title(const std::string_view title) noexcept;
         std::string_view title();
@@ -41,7 +44,7 @@ namespace ogf {
         static unsigned int s_window_count;
 
         struct Impl;
-        Impl* m_impl;
+        Impl* m_impl{nullptr};
     };
 
 }

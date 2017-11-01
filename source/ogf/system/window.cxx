@@ -4,6 +4,7 @@
 
 #include <SDL2/SDL.h>
 
+#include <ogf/graphics/drawable.hxx>
 #include <ogf/system/event.hxx>
 
 namespace ogf {
@@ -95,6 +96,10 @@ namespace ogf {
 
     void Window::swap_buffers() {
         SDL_GL_SwapWindow(m_impl->window);
+    }
+
+    void Window::draw(const Drawable& drawable, Shader& shader) const {
+        drawable.draw(*this, shader);
     }
 
     bool Window::is_open() const noexcept {
