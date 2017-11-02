@@ -1,5 +1,6 @@
 sources += files(
     'color.cxx',
     'image.cxx',
-    'shader.cxx'
+    'shader.cxx',
+    'texture.cxx',
 )

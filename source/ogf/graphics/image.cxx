@@ -10,7 +10,7 @@
 namespace ogf {
 
     void Image::load_from_file(const std::string_view filename) {
-        destroy();
+        free();
         int width{}, height{}, channels{};
 	    auto data = stbi_load(filename.data(), &width, &height, &channels, 4);
         if(data == nullptr) {
@@ -23,7 +23,7 @@ namespace ogf {
         stbi_image_free(data);
     }
 
-    void Image::destroy() {
+    void Image::free() {
         m_pixels.clear();
         m_width = 0;
         m_height = 0;

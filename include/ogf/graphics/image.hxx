@@ -13,7 +13,7 @@ namespace ogf {
         void load_from_file(const std::string_view filename);
         //void save_to_file(const std::string_view filename);
 
-        void destroy();
+        void free();
 
         void set_pixel(const unsigned int x, const unsigned int y, const Color& color);
         Color pixel(const unsigned int x, const unsigned int y) const;
@@ -21,6 +21,8 @@ namespace ogf {
         std::tuple<unsigned int, unsigned int> size();
 
     private:
+        friend class Texture;
+
         std::vector<Uint8> m_pixels{};
         unsigned int       m_width{};
         unsigned int       m_height{};
