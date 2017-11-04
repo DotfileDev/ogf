@@ -2,6 +2,8 @@
 
 #include <cmath>
 
+#include <functional>
+
 #include <type_traits>
 
 namespace ogf {
@@ -191,5 +193,18 @@ namespace ogf {
     Vector3<T> operator/=(Vector3<T>& left, const T value) noexcept {
         return left = left / value;
     }
+
+}
+
+namespace std {
+
+    template<typename T>
+    struct hash<ogf::Vector3<T>> {
+        size_t operator()(const ogf::Vector3<T>& vector) {
+            return hash<T>{}(vector.x)
+                    ^ (hash<T>{}(vector.y) << 1) >> 1
+                    ^ (hash<T>{}(vector.z) << 1);
+        }
+    };
 
 }
